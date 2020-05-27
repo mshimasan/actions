@@ -1,0 +1,13 @@
+name: Greetings
+
+on: push
+
+jobs:
+  commandtest:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Shell Test
+      run: |
+        touch testfile
+        echo "refs #123456" > testfile
+        cat testfile
