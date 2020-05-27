@@ -8,11 +8,11 @@ jobs:
     steps:
     - name: create ticket number file
       run: |
-        touch testfile | echo "refs #123456 commit message" > testfile  
+        touch testfile | echo "refs #123456 commit message #12345" > testfile  
     - name: find ticket number and register environment variables
       id: findnumber
       run: |
-        echo "::set-env name=ticketnum::$(grep -i -E 'refs[]*[#]*[0-9]+' testfile)"
+        echo "::set-env name=ticketnum::$(grep -i -E 'refs[ ]#[0-9]+' testfile)"
     - name: check ticket number from file
       run: |
         echo $ticketnum
