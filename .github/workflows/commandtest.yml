@@ -14,10 +14,10 @@ jobs:
         echo ::set-env name=TEST::$(grep -i -E "refs[]*[#]*[0-9]+" testfile) 
     - name: Shell Test
       run: |
-        echo $TEST
-        if [ -z $TEST ]; then
+        echo ${{ env.TEST }}
+        if [ -z ${{ env.TEST }} ]; then
           echo "there's no ticket number"
         else
-          echo "this is ticket number: ${ticket_number}"
+          echo "this is ticket number: ${{ env.TEST }}"
         fi
         
