@@ -10,12 +10,12 @@ jobs:
       run: |
         touch testfile | echo "refs #123456 commit message" > testfile  
     - name: find ticket number and register environment variables
-      run: |
-        echo ::set-env name=TEST::$(grep -i -E "refs[]*[#]*[0-9]+" testfile) 
+      id: findnumber
+      run: grep -i -E "refs[]*[#]*[0-9]+" testfile
     - name: check ticket number from file
       run: |
-        echo ${{ env.TEST }}
-        if [ -z ${{ env.TEST }} ]; then
+        echo ${{ steps.findnumber.outputs.result }}
+        if [ -z ${{ steps.findnumber.outputs.result }} ]; then
           echo "there's no ticket number"
         else
           echo "this is ticket number: ${{ env.TEST }}"
