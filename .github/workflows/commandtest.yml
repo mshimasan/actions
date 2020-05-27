@@ -11,3 +11,4 @@ jobs:
         touch testfile
         echo "refs #123456" > testfile
         cat testfile
+        grep "123456" testfile
