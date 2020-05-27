@@ -6,12 +6,16 @@ jobs:
   commandtest:
     runs-on: ubuntu-latest
     steps:
+    - name: create file
+      run: |
+        touch testfile | echo "refs #123456 commit message" > testfile  
+    - name: create file
+      run: |
+        echo ::set-env name=TEST::$(grep -i -E "refs[]*[#]*[0-9]+" testfile) 
     - name: Shell Test
       run: |
-        touch testfile | echo "refs #123456 commit message" > testfile
-        ticket_number=$(grep -Eo "[0-9]+" testfile)
-        echo $ticket_number
-        if [ -z $ticket_number ]; then
+        echo $TEST
+        if [ -z $TEST ]; then
           echo "there's no ticket number"
         else
           echo "this is ticket number: ${ticket_number}"
