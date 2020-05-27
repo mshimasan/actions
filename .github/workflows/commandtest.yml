@@ -11,5 +11,6 @@ jobs:
         touch testfile
         echo "refs #123456 commit message" > testfile
         cat testfile
-        grep -Eo "[0-9]+" testfile
+        ticket_number=$(grep -Eo "[0-9]+" testfile)
+        echo ticket_number
         
