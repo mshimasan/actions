@@ -12,7 +12,7 @@ jobs:
     - name: find ticket number and register environment variables
       id: findnumber
       run: |
-        grep -i -E "refs[]*[#]*[0-9]+" testfile
+        grep -i -E "[0-9]+" testfile
     - name: check ticket number from file
       run: |
         echo ${{ steps.findnumber.outputs.result }}
