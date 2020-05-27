@@ -8,9 +8,7 @@ jobs:
     steps:
     - name: Shell Test
       run: |
-        touch testfile
-        echo "refs #123456 commit message" > testfile
-        cat testfile
+        touch testfile | echo "refs #123456 commit message" > testfile
         ticket_number=$(grep -Eo "[0-9]+" testfile)
         echo $ticket_number
         
