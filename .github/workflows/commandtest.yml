@@ -9,6 +9,7 @@ jobs:
     - name: Shell Test
       run: |
         touch testfile
-        echo "refs #123456" > testfile
+        echo "refs #123456 commit message" > testfile
         cat testfile
-        grep "123456" testfile
+        grep -Eo "[0-9]+" testfile
+        
