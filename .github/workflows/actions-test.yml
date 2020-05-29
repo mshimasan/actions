@@ -1,0 +1,12 @@
+name: actions-test
+on: push
+jobs:
+  private:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.1.1
+    - name: use private
+      uses: ./.github/actions/actions-test
+      id: hello
+      with:
+        who-to-greet: 'Mona the Octocat'
