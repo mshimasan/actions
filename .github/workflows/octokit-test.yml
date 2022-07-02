@@ -10,10 +10,12 @@ jobs:
         with:
           script: |
             var story_data = {
-              title: context.payload.pull_request,
-              url: context.payload.pull_request._links.html.href
+              title: context.payload.pull_request.title,
+              url: context.payload.pull_request.html_url,
+              repo_name: context.repo.repo,
+              build_number: 1
             }
-            console.log(context.payload.pull_request)
+            console.log(context)
             return story_data
       - name: Show PullRequest Info
         env:
