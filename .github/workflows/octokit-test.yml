@@ -10,7 +10,7 @@ jobs:
         with:
           script: |
             var story_data = {
-              title: context.issue
+              title: context.payload.pull_request
             }
             return story_data
       - name: Show PullRequest Info
