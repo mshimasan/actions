@@ -1,5 +1,7 @@
 name: actions-test
 on: pull_request
+  types: 
+    - labeled
 jobs:
   info:
     runs-on: ubuntu-latest
@@ -13,6 +15,7 @@ jobs:
               title: context.payload.pull_request.title,
               url: context.payload.pull_request.html_url,
               repo_name: context.repo.repo,
+              actor: context.actor
               build_number: 1
             }
             console.log(context)
