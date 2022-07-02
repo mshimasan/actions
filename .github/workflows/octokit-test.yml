@@ -1,16 +1,19 @@
 name: actions-test
-on: push
+on: pull_request
 jobs:
   info:
     runs-on: ubuntu-latest
     steps:
       - name: Get PullRequest Info
         uses: actions/github-script@v5
-        id: github_context
+        id: story_data
         with:
           script: |
-            return context
+            var story_data = {
+              title: context.issue.pull_request
+            }
+            return data
       - name: Show PullRequest Info
         env:
-          GITHUB_CONTEXT: ${{ toJson(steps.github_context) }}
-        run: echo "$GITHUB_CONTEXT"
+          STORY_DATA: ${{ toJson(steps.story_data) }}
+        run: echo "$STORY_DATA"
