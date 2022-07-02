@@ -1,0 +1,15 @@
+name: actions-test
+on: push
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Get PullRequest Info
+      uses: actions/github-script@v5
+      id: github_context
+      with:
+        script: |
+          return context
+    - name: Show PullRequest Info
+      env:
+        GITHUB_CONTEXT: ${{ toJson(steps.github_context) }}
+      run: echo "$GITHUB_CONTEXT"
