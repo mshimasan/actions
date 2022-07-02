@@ -23,5 +23,5 @@ jobs:
             return story_data
       - name: Show PullRequest Info
         env:
-          STORY_DATA: ${{ toJson(steps.story_data) }}
+          STORY_DATA: ${{ toJson(steps.story_data.outputs.result) }}
         run: echo "$STORY_DATA"
