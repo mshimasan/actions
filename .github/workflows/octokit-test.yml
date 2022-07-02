@@ -1,16 +1,27 @@
 name: actions-test
-on: push
+on: 
+  pull_request:
+    types: 
+      - labeled
 jobs:
   info:
     runs-on: ubuntu-latest
     steps:
       - name: Get PullRequest Info
-        uses: actions/github-script@v5
-        id: github_context
+        uses: actions/github-script@v6
+        id: story_data
         with:
           script: |
-            return context
+            var story_data = {
+              title: context.payload.pull_request.title,
+              url: context.payload.pull_request.html_url,
+              repo_name: context.repo.repo,
+              actor: context.actor,
+              build_number: 1,
+            }
+            console.log(context)
+            return story_data
       - name: Show PullRequest Info
         env:
-          GITHUB_CONTEXT: ${{ toJson(steps.github_context) }}
-        run: echo "$GITHUB_CONTEXT"
+          STORY_DATA: ${{ toJson(steps.story_data.outputs.result) }}
+        run: echo "$STORY_DATA"
