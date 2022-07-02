@@ -20,7 +20,7 @@ jobs:
               build_number: 1,
             }
             console.log(context)
-            return context
+            return story_data
       - name: Show PullRequest Info
         env:
           STORY_DATA: ${{ toJson(steps.story_data) }}
