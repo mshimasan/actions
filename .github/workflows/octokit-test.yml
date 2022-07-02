@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get PullRequest Info
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         id: story_data
         with:
           script: |
