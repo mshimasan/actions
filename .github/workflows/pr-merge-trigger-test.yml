@@ -8,9 +8,7 @@ on:
 jobs:
   pr-merged-trigger-test:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
     steps:
-      - run: |
-          echo "${GITHUB_REPOSITORY}"
-          echo "${GITHUB_REF_NAME}"
-          echo "${{ github.ref }}"
-          echo "${{ github.ref_name }}"
+      - run: echo "$GITHUB_CONTEXT"
