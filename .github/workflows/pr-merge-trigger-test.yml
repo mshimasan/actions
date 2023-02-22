@@ -11,4 +11,7 @@ jobs:
     env:
       GITHUB_CONTEXT: ${{ toJson(github) }}
     steps:
-      - run: echo "$GITHUB_CONTEXT"
+      - run: |
+          echo "REPOSITORY_NAME_WITHOUT_SLASHES=${GITHUB_REPOSITORY/\//.}" >> $GITHUB_ENV
+          echo "BRANCH_NAME_WITHOUT_SLASHES=${github.head_ref//\//.}" >> $GITHUB_ENV
+          echo "${{ github.head.ref }}"
