@@ -1,0 +1,15 @@
+name: pr merged trigger test
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  pr-merged-trigger-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "${GITHUB_REPOSITORY}"
+          echo "${GITHUB_REF_NAME}"
+          echo "${{ github.ref }}"
