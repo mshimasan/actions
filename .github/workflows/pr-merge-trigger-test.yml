@@ -4,6 +4,8 @@ on:
   pull_request:
     types:
       - closed
+    path:
+      - /.github/workflows/octokit-test.yml
 
 jobs:
   pr-merged-trigger-test:
