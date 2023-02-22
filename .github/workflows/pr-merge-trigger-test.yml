@@ -1,20 +1,16 @@
 name: pr merged trigger test
 
 on:
-  pull_request:
-    types:
-      - closed
-    path:
-      - /.github/workflows/octokit-test.yml
+  push:
+    branches:
+      - master
 
 jobs:
   pr-merged-trigger-test:
     runs-on: ubuntu-latest
     env:
-      GITHUB_HEAD_REF: ${{ github.head_ref }}
+      GITHUB_CONTEXT: ${{ toJson(github) }}
     steps:
       - run: |
           echo "REPOSITORY_NAME_WITHOUT_SLASHES=${GITHUB_REPOSITORY/\//.}" >> $GITHUB_ENV
           echo "BRANCH_NAME_WITHOUT_SLASHES=${GITHUB_HEAD_REF//\//.}" >> $GITHUB_ENV
-      - run: |
-          echo "${{ env.BRANCH_NAME_WITHOUT_SLASHES }}"
