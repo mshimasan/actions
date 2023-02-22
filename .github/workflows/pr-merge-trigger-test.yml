@@ -13,3 +13,4 @@ jobs:
           echo "${GITHUB_REPOSITORY}"
           echo "${GITHUB_REF_NAME}"
           echo "${{ github.ref }}"
+          echo "${{ github.ref_name }}"
