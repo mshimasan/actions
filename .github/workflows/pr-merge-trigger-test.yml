@@ -14,5 +14,5 @@ jobs:
       - run: |
           echo "REPOSITORY_NAME_WITHOUT_SLASHES=${GITHUB_REPOSITORY/\//.}" >> $GITHUB_ENV
           echo "BRANCH_NAME_WITHOUT_SLASHES=${GITHUB_HEAD_REF//\//.}" >> $GITHUB_ENV
-          echo "${{ github.head.ref }}"
+      - run: |
           echo "${{ env.BRANCH_NAME_WITHOUT_SLASHES }}"
