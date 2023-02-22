@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_CONTEXT: ${{ toJson(github) }}
+      GITHUB_HEAD_REF: ${{ github.head_ref }}
     steps:
       - run: |
           echo "REPOSITORY_NAME_WITHOUT_SLASHES=${GITHUB_REPOSITORY/\//.}" >> $GITHUB_ENV
-          echo "BRANCH_NAME_WITHOUT_SLASHES=${github.head_ref//\//.}" >> $GITHUB_ENV
+          echo "BRANCH_NAME_WITHOUT_SLASHES=${GITHUB_HEAD_REF//\//.}" >> $GITHUB_ENV
           echo "${{ github.head.ref }}"
